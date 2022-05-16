@@ -11,9 +11,9 @@ namespace CatWorx.BadgeMaker
   class Program
   {
     // Method to get employee data from the user
-    static List<string> GetEmployees() {
+    static List<Employee> GetEmployees() {
       // Create a new list of employees
-      List<string> employees = new List<string>();
+      List<Employee> employees = new List<Employee>();
 
       // Collect user values until the value is an empty string
       while (true) {
@@ -28,19 +28,21 @@ namespace CatWorx.BadgeMaker
         if (input == null) {
           break;
         }
-        // add the input to the employees list
-        employees.Add(input);
+        // create a new employee instance
+        Employee currentEmployee = new Employee(input, "Smith");
+        // add the currentEmployee
+        employees.Add(currentEmployee);
       }
 
       return employees;
     }
 
     // method to print employees
-    static void PrintEmployees(List<string> employees) {
+    static void PrintEmployees(List<Employee> employees) {
       // loop through all the employees
       for (int i = 0; i < employees.Count; i++) {
-        // write all the employee names to the console
-        Console.WriteLine(employees[i]);
+        // write all the employee names to the console. Each item in employees is now an Employee instance
+        Console.WriteLine(employees[i].GetName());
       }
     }
 
@@ -48,7 +50,7 @@ namespace CatWorx.BadgeMaker
     //? static means that the scope of the method is at the class level and can be invoked without creating a new class instance (object). Void means there will be no explicit return type
     static void Main(string[] args) {
       // employee-getting code
-      List<string> employees = GetEmployees();
+      List<Employee> employees = GetEmployees();
       // employee-printing code
       PrintEmployees(employees);
     }
