@@ -14,7 +14,31 @@ namespace CatWorx.BadgeMaker
     //? static means that the scope of the method is at the class level and can be invoked without creating a new class instance (object). Void means there will be no explicit return type
     static void Main(string[] args)
     {
-   
+      // Create a new list of employees
+      List<string> employees = new List<string>();
+
+      // Collect user values until the value is an empty string
+      while (true) {
+        // ask the user for an employee name
+        Console.WriteLine("Please enter a name: (leave empty to exit): ");
+
+        // get a name from the console and assign it to a variable
+        string input = Console.ReadLine();
+
+        // Break if the user hits ENTER without typing a name
+        if (input == "") {
+          break;
+        }
+        // add the input to the employees list
+        employees.Add(input);
+      }
+
+      // loop through all the employees
+      for (int i = 0; i < employees.Count; i++) {
+        // write all the employee names to the console
+        Console.WriteLine(employees[i]);
+      }
     }
   }
 }
+
