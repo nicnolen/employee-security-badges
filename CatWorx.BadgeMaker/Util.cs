@@ -16,5 +16,10 @@ namespace CatWorx.BadgeMaker
          Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl())); //String.Format takes a string to use as a template and then fills in the placeholders with values
       }
     }
+
+    // method to make a CSV file (comma-seperated values)
+    public static void MakeCSV(List<Employee> employees) {
+      
+    }
   }
 }
