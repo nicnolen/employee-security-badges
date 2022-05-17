@@ -77,7 +77,11 @@ namespace CatWorx.BadgeMaker
       using(WebClient client = new WebClient()) {
         // access and iterate through employee information
         for (int i = 0; i < employees.Count; i++) {
-
+          // convert stream to image
+          Image photo = Image.FromStream(client.OpenRead(employees[i].GetPhotoUrl()));
+          // signify that the badge image will be the background image where you print employee data
+          Image background = Image.FromFile("badge.png");
+          background.Save("data/employeeBadge.png");
         }
       }
     }
