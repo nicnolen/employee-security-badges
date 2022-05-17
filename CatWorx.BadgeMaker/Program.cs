@@ -18,7 +18,7 @@ namespace CatWorx.BadgeMaker
       // Collect user values until the value is an empty string
       while (true) {
         // ask the user for an employee name
-        Console.WriteLine("Please enter a name: (ctrl C (Windows) or ⌘C for Mac to exit): ");
+        Console.WriteLine("Please enter a name: (Press enter to exit): ");
 
         // get a name from the console and assign it to a variable
         //! string? sets the variable as a nullable string. ? is a nullable reference type
@@ -49,12 +49,7 @@ namespace CatWorx.BadgeMaker
 
     // method to print employees
     static void PrintEmployees(List<Employee> employees) {
-      // loop through all the employees
-      for (int i = 0; i < employees.Count; i++) {
-         string template = "{0,-10}\t{1,-20}\t{2}";
-        // write all the employee names to the console. Each item in employees is now an Employee instance
-         Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl())); //String.Format takes a string to use as a template and then fills in the placeholders with values
-      }
+      Util.PrintEmployees(employees);
     }
 
     //* Main method serves as the entry point to the application
