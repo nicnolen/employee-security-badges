@@ -52,9 +52,10 @@ namespace CatWorx.BadgeMaker
     static void Main(string[] args) {
       // employee-getting code
       List<Employee> employees = GetEmployees();
-      // print employees
-      Util.PrintEmployees(employees);
+      // print employees to CSV file
       Util.MakeCSV(employees);
+      // make badges for employees
+      Util.MakeBadges(employees);
     }
   }
 }

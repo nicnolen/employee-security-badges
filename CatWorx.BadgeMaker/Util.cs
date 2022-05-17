@@ -3,6 +3,8 @@
 using System;
 using System.IO; // lets us use the Directory class
 using System.Collections.Generic;
+using System.Drawing; // lets us use the Image class
+
 
 namespace CatWorx.BadgeMaker
 {
@@ -43,7 +45,9 @@ namespace CatWorx.BadgeMaker
 
     // method to make badges
     public static void MakeBadges(List<Employee> employees) {
-      
+      // create image
+      Image newImage = Image.FromFile("badge.png");
+      newImage.Save("data/employeeBadge.png");
     }
   }
 }

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "TlTBvwuuLFW+sSKikst3ZvxvPP1GlKA2Xs6rmqLpzH/x6GDgNMbpqTiQFWBoidU0of08NEDshImJjdzmS5/TVg==",
+  "dgSpecHash": "loZumIxwPJ0UAsEkvNVsGgXXU8AWMzv4g0wKcqrqaLHfRQIu3+aUoXOazDGJC1ZJqK9jdrbNm4mzAkUkFBwkGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\nicno\\OneDrive\\Projects\\employee-security-badges\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\nicno\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\nicno\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
