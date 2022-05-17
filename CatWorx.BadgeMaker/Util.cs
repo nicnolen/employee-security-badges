@@ -4,6 +4,7 @@ using System;
 using System.IO; // lets us use the Directory class
 using System.Collections.Generic;
 using System.Drawing; // lets us use the Image class
+using System.Net; // lets us use the WebClient class
 
 
 namespace CatWorx.BadgeMaker
@@ -67,10 +68,18 @@ namespace CatWorx.BadgeMaker
       int EMPLOYEE_ID_START_Y = 690;
       int EMPLOYEE_ID_WIDTH = BADGE_WIDTH;
       int EMPLOYEE_ID_HEIGHT = 100;
-      
+
       // create image
       Image newImage = Image.FromFile("badge.png");
       newImage.Save("data/employeeBadge.png");
+
+      // instance of WebClient is disposed after code in the block has run
+      using(WebClient client = new WebClient()) {
+        // access and iterate through employee information
+        for (int i = 0; i < employees.Count; i++) {
+
+        }
+      }
     }
   }
 }
