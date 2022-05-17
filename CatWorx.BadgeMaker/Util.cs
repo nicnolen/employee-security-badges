@@ -1,6 +1,7 @@
 /* HANDLES OUTPUT RELATED LOGIC */
 // Import packages
 using System;
+using System.IO; // lets us use the Directory class
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
@@ -19,7 +20,11 @@ namespace CatWorx.BadgeMaker
 
     // method to make a CSV file (comma-seperated values)
     public static void MakeCSV(List<Employee> employees) {
-      
+      // check to see if folder exists
+      if (!Directory.Exists("data")) {
+        // if the data folder doesnt exist, create it
+        Directory.CreateDirectory("data");
+      }
     }
   }
 }
