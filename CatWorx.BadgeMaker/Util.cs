@@ -83,6 +83,8 @@ namespace CatWorx.BadgeMaker
           Image background = Image.FromFile("badge.png");
           // create canvas to make the badge
           Image badge = new Bitmap(BADGE_WIDTH, BADGE_HEIGHT);
+          // allow graphical modifications of the badge
+          Graphics graphic = Graphics.FromImage(badge);
         }
       }
     }
