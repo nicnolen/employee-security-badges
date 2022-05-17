@@ -40,5 +40,10 @@ namespace CatWorx.BadgeMaker
         }
       };
     }
+
+    // method to make badges
+    public static void MakeBadges(List<Employee> employees) {
+      
+    }
   }
 }
