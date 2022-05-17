@@ -29,7 +29,15 @@ namespace CatWorx.BadgeMaker
       // create a new CSV file
       //! NOTE: using can import a namespace or (in this case) temporarily use a resource depending on the context
       using (StreamWriter file = new StreamWriter("data/employees.csv")) {
+        // provide column headings
+        file.WriteLine("ID,Name,PhotoUrl");
 
+          // loop through all the employees
+        for (int i = 0; i < employees.Count; i++) {
+          string template = "{0,-10}\t{1,-20}\t{2}";
+          // populate the CSV file with actual employee data
+          file.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl())); //String.Format takes a string to use as a template and then fills in the placeholders with values
+        }
       };
     }
   }
