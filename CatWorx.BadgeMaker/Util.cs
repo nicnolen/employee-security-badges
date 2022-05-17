@@ -26,7 +26,7 @@ namespace CatWorx.BadgeMaker
         Directory.CreateDirectory("data");
       }
 
-      // create a new CSV file
+      // create a new CSV file. Note: StreamWriter writes content to a file
       //! NOTE: using can import a namespace or (in this case) temporarily use a resource depending on the context
       using (StreamWriter file = new StreamWriter("data/employees.csv")) {
         // provide column headings
