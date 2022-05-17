@@ -25,6 +25,12 @@ namespace CatWorx.BadgeMaker
         // if the data folder doesnt exist, create it
         Directory.CreateDirectory("data");
       }
+
+      // create a new CSV file
+      //! NOTE: using can import a namespace or (in this case) temporarily use a resource depending on the context
+      using (StreamWriter file = new StreamWriter("data/employees.csv")) {
+
+      };
     }
   }
 }
