@@ -81,7 +81,8 @@ namespace CatWorx.BadgeMaker
           Image photo = Image.FromStream(client.OpenRead(employees[i].GetPhotoUrl()));
           // signify that the badge image will be the background image where you print employee data
           Image background = Image.FromFile("badge.png");
-          background.Save("data/employeeBadge.png");
+          // create canvas to make the badge
+          Image badge = new Bitmap(BADGE_WIDTH, BADGE_HEIGHT);
         }
       }
     }
