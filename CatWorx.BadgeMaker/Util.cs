@@ -85,6 +85,8 @@ namespace CatWorx.BadgeMaker
           Image badge = new Bitmap(BADGE_WIDTH, BADGE_HEIGHT);
           // allow graphical modifications of the badge
           Graphics graphic = Graphics.FromImage(badge);
+          // draw images on the badge. NOTE Rectangle class lets you allocate a position and size on the badge
+          graphic.DrawImage(background, new Rectangle(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
         }
       }
     }
