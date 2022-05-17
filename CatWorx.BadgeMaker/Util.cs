@@ -5,7 +5,7 @@ using System.IO; // lets us use the Directory class
 using System.Collections.Generic;
 using System.Drawing; // lets us use the Image class
 using System.Net; // lets us use the WebClient class
-
+using System.Runtime.Serialization;
 
 namespace CatWorx.BadgeMaker
 {
@@ -73,6 +73,15 @@ namespace CatWorx.BadgeMaker
       Image newImage = Image.FromFile("badge.png");
       newImage.Save("data/employeeBadge.png");
 
+      // graphics objects
+      StringFormat format = new StringFormat();
+      format.Alignment = StringAlignment.Center;
+      int FONT_SIZE = 32;
+      Font font = new Font("Arial", FONT_SIZE);
+      Font monoFont = new Font("Courier New", FONT_SIZE);
+
+      SolidBrush brush = new SolidBrush(Color.Black);
+
       // instance of WebClient is disposed after code in the block has run
       using(WebClient client = new WebClient()) {
         // access and iterate through employee information
@@ -89,6 +98,43 @@ namespace CatWorx.BadgeMaker
           graphic.DrawImage(background, new Rectangle(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
           // insert the employee photo
           graphic.DrawImage(photo, new Rectangle(PHOTO_START_X, PHOTO_START_Y, PHOTO_WIDTH, PHOTO_HEIGHT));
+          // company name
+          // draw the specified text string in the specified Reactangle
+          graphic.DrawString(employees[i].GetCompanyName(), font, new SolidBrush(Color.White), new Rectangle(
+            COMPANY_NAME_START_X,
+            COMPANY_NAME_START_Y,
+            BADGE_WIDTH,
+            COMPANY_NAME_WIDTH
+          ),
+          format
+          );
+          // employee name
+          graphic.DrawString(
+            employees[i].GetName(),
+            font,
+            brush,
+            new Rectangle(
+              EMPLOYEE_NAME_START_X,
+              EMPLOYEE_NAME_START_Y,
+              BADGE_WIDTH,
+              EMPLOYEE_NAME_HEIGHT
+            ),
+            format
+          );
+          // employee ID
+          graphic.DrawString(
+            employees[i].GetId().ToString(),
+            monoFont,
+            brush,
+            new Rectangle(
+              EMPLOYEE_ID_START_X,
+              EMPLOYEE_ID_START_Y,
+              EMPLOYEE_ID_WIDTH,
+              EMPLOYEE_ID_HEIGHT
+            ),
+            format
+          );
+          badge.Save("data/employeeBadge.png");
         }
       }
     }
