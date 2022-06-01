@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace CatWorx.BadgeMaker {
   class PeopleFetcher
@@ -11,12 +12,24 @@ namespace CatWorx.BadgeMaker {
       List<Employee> employees = new List<Employee>();
       using (WebClient client = new WebClient())
       {
-        // Image
+        // Download information from the URL as a string
         string response = client.DownloadString("https://randomuser.me/api/?results=10&nat=us&inc=name,id,picture");
-        Console.WriteLine(response);
-      }
-      return employees;
-    }
+        // parse the JSON
+        JObject json = JObject.Parse(response);
+        // Loop through each token in api response results
+        foreach(JToken person in json.SelectToken("results")) {
+          Employee employee = new Employee
+            (
+              person.SelectToken("name.first").ToString(),
+              person.SelectToken("name.last").ToString(),
+              Int32.Parse(person.SelectToken("id.value").ToString().Replace("-", "")),
+              person.SelectToken("picture.large").ToString()
+            );
+            employees.Add(employee);
+          }
+        }
+        return employees;
+        }
     // Method to get employee data from the user
     public static List<Employee> GetEmployees() {
       // Create a new list of employees
