@@ -11,10 +11,10 @@
   - [Contact Me](#contact-me)
 
   ## Description
-  An app that creates employee security badges
+  An app that creates employee security badges through an API, or through manually inputting employee information
 
   ## Usage Instructions
-  Use
+  To use this app, type in dotnet run to the CLI. You will then be prompted if you want to enter employee information manually. If you type "yes" you will be asked to put in the employee's first name, last name, id, and picture. If you type "no", you will be prompted with another question that asks if you want to fetch employee data from the API. If you type yes, 10 random employees will be generated. If you type no, you will be kicked out of the prompts.
 
   ## License
   Permission to use this application is granted under the MIT license.
