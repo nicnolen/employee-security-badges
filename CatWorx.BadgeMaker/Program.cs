@@ -13,13 +13,16 @@ namespace CatWorx.BadgeMaker
     //* Main method serves as the entry point to the application
     //? static means that the scope of the method is at the class level and can be invoked without creating a new class instance (object). Void means there will be no explicit return type
     static void Main(string[] args) {
-      // employee-getting code
-      List<Employee> employees = GetEmployees();
+      List<Employee> employees = PeopleFetcher.GetFromApi();
+      // // employee-getting code
+      // employees = PeopleFetcher.GetEmployees();
+      employees = PeopleFetcher.GetFromApi();
       // print employees to CSV file
       Util.MakeCSV(employees);
       // make badges for employees
       Util.MakeBadges(employees);
     }
+
   }
 }
 

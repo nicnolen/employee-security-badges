@@ -4,8 +4,13 @@ using System.Collections.Generic;
 namespace CatWorx.BadgeMaker {
   class PeopleFetcher
   {
-        // Method to get employee data from the user
-    static List<Employee> GetEmployees() {
+    // method to get data from API
+    public static List<Employee> GetFromApi() {
+      List<Employee> employees = new List<Employee>();
+      return employees;
+    }
+    // Method to get employee data from the user
+    public static List<Employee> GetEmployees() {
       // Create a new list of employees
       List<Employee> employees = new List<Employee>();
 
