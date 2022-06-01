@@ -1,12 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace CatWorx.BadgeMaker {
   class PeopleFetcher
   {
     // method to get data from API
+
     public static List<Employee> GetFromApi() {
       List<Employee> employees = new List<Employee>();
+      using (WebClient client = new WebClient())
+      {
+        // Image
+        string response = client.DownloadString("https://randomuser.me/api/?results=10&nat=us&inc=name,id,picture");
+        Console.WriteLine(response);
+      }
       return employees;
     }
     // Method to get employee data from the user
