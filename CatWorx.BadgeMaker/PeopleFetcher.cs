@@ -6,30 +6,6 @@ using Newtonsoft.Json.Linq;
 namespace CatWorx.BadgeMaker {
   class PeopleFetcher
   {
-    // method to get data from API
-
-    public static List<Employee> GetFromApi() {
-      List<Employee> employees = new List<Employee>();
-      using (WebClient client = new WebClient())
-      {
-        // Download information from the URL as a string
-        string response = client.DownloadString("https://randomuser.me/api/?results=10&nat=us&inc=name,id,picture");
-        // parse the JSON
-        JObject json = JObject.Parse(response);
-        // Loop through each token in api response results
-        foreach(JToken person in json.SelectToken("results")) {
-          Employee employee = new Employee
-            (
-              person.SelectToken("name.first").ToString(),
-              person.SelectToken("name.last").ToString(),
-              Int32.Parse(person.SelectToken("id.value").ToString().Replace("-", "")),
-              person.SelectToken("picture.large").ToString()
-            );
-            employees.Add(employee);
-          }
-        }
-        return employees;
-        }
     // Method to get employee data from the user
     public static List<Employee> GetEmployees() {
       // Create a new list of employees
@@ -66,5 +42,30 @@ namespace CatWorx.BadgeMaker {
 
       return employees;
     }
+
+    // method to get data from API
+
+    public static List<Employee> GetFromApi() {
+      List<Employee> employees = new List<Employee>();
+      using (WebClient client = new WebClient())
+      {
+        // Download information from the URL as a string
+        string response = client.DownloadString("https://randomuser.me/api/?results=10&nat=us&inc=name,id,picture");
+        // parse the JSON
+        JObject json = JObject.Parse(response);
+        // Loop through each token in api response results
+        foreach(JToken person in json.SelectToken("results")) {
+          Employee employee = new Employee
+            (
+              person.SelectToken("name.first").ToString(),
+              person.SelectToken("name.last").ToString(),
+              Int32.Parse(person.SelectToken("id.value").ToString().Replace("-", "")),
+              person.SelectToken("picture.large").ToString()
+            );
+            employees.Add(employee);
+          }
+        }
+        return employees;
+        }
   }
 }
